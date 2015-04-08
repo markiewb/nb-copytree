@@ -16,12 +16,6 @@
 package de.markiewb.netbeans.plugins.copytree;
 
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Iterator;
-import java.util.List;
-import javax.swing.JOptionPane;
-import org.netbeans.api.java.source.TreePathHandle;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
@@ -78,7 +72,8 @@ public final class CopyHierarchyAction extends CookieAction {
             sb.append("\t");
         }
         sb.append(parent.getDisplayName());
-        sb.append("\n\r");
+        sb.append(System.lineSeparator());
+        
         {
             for (Node node : children) {
                 Children child = node.getChildren();
