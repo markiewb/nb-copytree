@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Benno Markiewicz (benno.markiewicz@googlemail.com).
+ * Copyright 2016 Benno Markiewicz (benno.markiewicz@googlemail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,18 +30,19 @@ import org.openide.util.datatransfer.ExClipboard;
 
 @ActionID(
         category = "Java",
-        id = "de.markiewb.netbeans.plugins.copytree.CopyHierarchy"
+        id = "de.markiewb.netbeans.plugins.copytree.CopyTree"
 )
 @ActionRegistration(
-        displayName = "#CTL_CopyHierarchy"
+        displayName = "#CTL_CopyTree"
 )
-@Messages("CTL_CopyHierarchy=Copy Tree To Clipboard")
+@Messages("CTL_CopyTree=Copy Tree To Clipboard")
 @ActionReferences({
-    @ActionReference(path = "Navigator/Actions/Hierarchy/text/x-java", position = 1153)
+    @ActionReference(path = "Navigator/Actions/Hierarchy/text/x-java", position = 1153),
+    @ActionReference(path = "Navigator/Actions/Members/text/x-java", position = 1250),
 })
-public final class CopyHierarchyAction extends CookieAction {
+public final class CopyTreeAction extends CookieAction {
 
-    public CopyHierarchyAction() {
+    public CopyTreeAction() {
     }
 
     @Override
@@ -94,7 +95,7 @@ public final class CopyHierarchyAction extends CookieAction {
 
     @Override
     public String getName() {
-        return Bundle.CTL_CopyHierarchy();
+        return Bundle.CTL_CopyTree();
     }
 
     @Override

@@ -6,7 +6,7 @@
     <version>1.1.0</version>
     <packaging>nbm</packaging>
 
-    <name>Copy hierarchy tree</name>
+    <name>Copy tree</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -109,12 +109,13 @@
             </plugin>
         </plugins>
     </build>
-    <description>Add the action "Copy Tree To Clipboard" to the context menu of the Java hierarchy and members view.
+    <description>Adds the action "Copy Tree To Clipboard" to the context menu of the Java hierarchy and members view.
 &lt;/p&gt;
 &lt;p&gt;
 &lt;h2&gt;Updates in 1.1.0:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copytree/issues/2"&gt;Feature&lt;/a&gt;]: Take text from HTMLDisplayName (where possible)&lt;/li&gt;
+&lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copytree/issues/3"&gt;Feature&lt;/a&gt;]: Add action to java members view&lt;/li&gt;
  &lt;/ul&gt;
 
 &lt;h2&gt;Updates in 1.0.0:&lt;/h2&gt;
