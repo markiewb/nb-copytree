@@ -71,7 +71,7 @@ public final class CopyHierarchyAction extends CookieAction {
         for (int i = 0; i < depth; i++) {
             sb.append("\t");
         }
-        sb.append(parent.getDisplayName());
+        sb.append(getName(parent));
         sb.append(System.lineSeparator());
         
         {
@@ -110,5 +110,21 @@ public final class CopyHierarchyAction extends CookieAction {
     @Override
     protected boolean asynchronous() {
         return false;
+    }
+
+    private String getName(Node parent) {
+        
+        final String html = stripHtml(parent.getHtmlDisplayName());
+        if (null==html || "".equals(html)){
+            return parent.getDisplayName();
+        }
+        return html.replaceAll("&lt;", "<");
+    }
+    
+    private String stripHtml(String text) {
+        if (null == text) {
+            return null;
+        }
+        return text.replaceAll("<[^>]*>", "");
     }
 }
