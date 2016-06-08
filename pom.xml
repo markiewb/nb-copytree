@@ -3,7 +3,7 @@
 
     <groupId>de.markiewb.netbeans.plugins</groupId>
     <artifactId>copytree</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>nbm</packaging>
 
     <name>Copy tree</name>
@@ -109,9 +109,15 @@
             </plugin>
         </plugins>
     </build>
-    <description>Adds the action "Copy Tree To Clipboard" to the context menu of the Java hierarchy and members view.
-&lt;/p&gt;
+    <description>Adds the action "Copy Tree" to the context menu of the Java hierarchy and members view. It is also available from the keymap, so it can be used for other focused trees too.
+
 &lt;p&gt;
+&lt;h2&gt;Updates in 1.2.0:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copytree/issues/4"&gt;Feature&lt;/a&gt;]: Provide global "Copy Tree" action (so you can set a shortcut and use it for other trees in the IDE too)&lt;/li&gt;
+
+ &lt;/ul&gt;
+
 &lt;h2&gt;Updates in 1.1.0:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;[&lt;a href="https://github.com/markiewb/nb-copytree/issues/2"&gt;Feature&lt;/a&gt;]: Take text from HTMLDisplayName (where possible)&lt;/li&gt;

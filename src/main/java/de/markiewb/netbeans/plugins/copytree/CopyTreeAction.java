@@ -16,38 +16,41 @@
 package de.markiewb.netbeans.plugins.copytree;
 
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
 import org.openide.nodes.Children;
 import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
-import org.openide.util.actions.CookieAction;
 import org.openide.util.datatransfer.ExClipboard;
 
 @ActionID(
-        category = "Java",
+        category = "Edit",
         id = "de.markiewb.netbeans.plugins.copytree.CopyTree"
 )
 @ActionRegistration(
         displayName = "#CTL_CopyTree"
 )
-@Messages("CTL_CopyTree=Copy Tree To Clipboard")
+@Messages("CTL_CopyTree=Copy Tree")
 @ActionReferences({
     @ActionReference(path = "Navigator/Actions/Hierarchy/text/x-java", position = 1153),
-    @ActionReference(path = "Navigator/Actions/Members/text/x-java", position = 1250),
-})
-public final class CopyTreeAction extends CookieAction {
+    @ActionReference(path = "Navigator/Actions/Members/text/x-java", position = 1250),})
+public final class CopyTreeAction implements ActionListener {
 
-    public CopyTreeAction() {
+    private final List<Node> context;
+
+    public CopyTreeAction(List<Node> context) {
+        this.context = context;
     }
 
     @Override
-    public void performAction(Node[] context) {
-        Node first = context[0];
+    public void actionPerformed(ActionEvent e) {
+        Node first = context.get(0);
 
         //get root node
         Node rootNode = first;
@@ -74,7 +77,7 @@ public final class CopyTreeAction extends CookieAction {
         }
         sb.append(getName(parent));
         sb.append(System.lineSeparator());
-        
+
         {
             for (Node node : children) {
                 Children child = node.getChildren();
@@ -83,45 +86,15 @@ public final class CopyTreeAction extends CookieAction {
         }
     }
 
-    @Override
-    protected int mode() {
-        return CookieAction.MODE_ALL;
-    }
-
-    @Override
-    protected Class<?>[] cookieClasses() {
-        return new Class[]{Node.class};
-    }
-
-    @Override
-    public String getName() {
-        return Bundle.CTL_CopyTree();
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return null;
-    }
-
-    @Override
-    protected boolean enable(Node[] activatedNodes) {
-        return activatedNodes!=null && activatedNodes.length>0;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
     private String getName(Node parent) {
-        
+
         final String html = stripHtml(parent.getHtmlDisplayName());
-        if (null==html || "".equals(html)){
+        if (null == html || "".equals(html)) {
             return parent.getDisplayName();
         }
         return html.replaceAll("&lt;", "<");
     }
-    
+
     private String stripHtml(String text) {
         if (null == text) {
             return null;
