@@ -1,3 +1,6 @@
+<hr>
+<h1 style="color: #FF0000">Looking for maintainers, who want to take over the development!</h1>
+<hr>
 Adds the action "Copy Tree" to the context menu of the Java hierarchy and members view. It is also available from the keymap, so it can be used for other focused trees too.
 
 <p>
